@@ -22,10 +22,11 @@ namespace IFile {
 			return (dir == null) ? null : dir.Path;
 		}
 
-		public static bool   Exists(this IDirectory dir)   { return Directory.Exists(dir.Path); }
-		public static string Name(this IDirectory dir)     { return System.IO.Path.GetFileName(dir.Path); }
-		public static void   Delete(this IDirectory dir)   { Directory.Delete(dir.Path, true); }
-		public static string FullPath(this IDirectory dir) { return System.IO.Path.GetFullPath(dir.Path); }
+		public static bool   Exists(this IDirectory dir)       { return Directory.Exists(dir.Path); }
+		public static bool   DoesNotExist(this IDirectory dir) { return ! dir.Exists(); }
+		public static string Name(this IDirectory dir)         { return System.IO.Path.GetFileName(dir.Path); }
+		public static void   Delete(this IDirectory dir)       { Directory.Delete(dir.Path, true); }
+		public static string FullPath(this IDirectory dir)     { return System.IO.Path.GetFullPath(dir.Path); }
 
 		/// <summary>Creates this directory (if it doesn't exist)</summary>
 		public static IDirectory Create(this IDirectory dir) {

@@ -22,6 +22,7 @@ namespace IFile {
 		}
 
 		public static bool   Exists(this IFile file)        { return File.Exists(file.Path); }
+		public static bool   DoesNotExist(this IFile file)  { return ! file.Exists(); }
 		public static string Name(this IFile file)          { return file.FileName(); }
 		public static string FileName(this IFile file)      { return System.IO.Path.GetFileName(file.Path); }
 		public static string DirectoryName(this IFile file) { return System.IO.Path.GetDirectoryName(file.Path); }
