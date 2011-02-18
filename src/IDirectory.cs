@@ -22,9 +22,10 @@ namespace IFile {
 			return (dir == null) ? null : dir.Path;
 		}
 
-		public static bool   Exists(this IDirectory dir) { return Directory.Exists(dir.Path); }
-		public static string Name(this IDirectory dir)   { return System.IO.Path.GetFileName(dir.Path); }
-		public static void   Delete(this IDirectory dir) { Directory.Delete(dir.Path, true); }
+		public static bool   Exists(this IDirectory dir)   { return Directory.Exists(dir.Path); }
+		public static string Name(this IDirectory dir)     { return System.IO.Path.GetFileName(dir.Path); }
+		public static void   Delete(this IDirectory dir)   { Directory.Delete(dir.Path, true); }
+		public static string FullPath(this IDirectory dir) { return System.IO.Path.GetFullPath(dir.Path); }
 
 		/// <summary>Creates this directory (if it doesn't exist)</summary>
 		public static IDirectory Create(this IDirectory dir) {
@@ -61,8 +62,19 @@ namespace IFile {
 			return dir;
 		}
 
-		public static string Relative(this IDirectory dir, string fullPath) {
-			return fullPath.Replace(dir.Path, "");
+		public static string Relative(this IDirectory dir, string path) {
+			var fullPath    = path.AsFile().FullPath();
+			var fullDirPath = dir.FullPath();
+
+			var index = fullPath.IndexOf(fullDirPath);
+			if (index < 0)
+				return null; // this path is NOT relative to this directory.
+			else
+				return fullPath.Substring(index + fullDirPath.Length);
+		}
+
+		public static string Relative(this IDirectory dir, IFile file) {
+			return dir.Relative(file.Path);
 		}
 
 		public static IDirectory CopyToExactPath(this IDirectory dir, string exactPath) {
@@ -115,14 +127,20 @@ namespace IFile {
 
 		public static List<IFile> Search(this IDirectory dir, string matcher, bool ignoreCase) {
 			// We have to initially substitude ** out for something besides a single * because then we replace single *'s.
-			matcher   = "^" + matcher.Replace("\\", "/").Replace(".", "\\.").Replace("**", ".REAL_REGEX_STAR").Replace("*", @"[^\/]+").Replace("REAL_REGEX_STAR", "*") + "$";
+			matcher = "^" + matcher.
+							Replace("\\", "/").                           // replace backslashes with forward slashes
+							Replace(".", "\\.").                          // escape periods
+							Replace("**", ".REAL_REGEX_STAR").            // setup ** replacement
+							Replace("*", @"[^\/]*").                      // replace * with "anything that's not a forward slash"
+							Replace("REAL_REGEX_STAR", "*") + "$";        // add * back for ** replacement
+
 			var regex = ignoreCase ? new Regex(matcher, RegexOptions.IgnoreCase) : new Regex(matcher);
 			return dir.Search(regex);
 		}
 
 		public static List<IFile> Search(this IDirectory dir, Regex regex) {
 			return dir.Files().Where(file => {
-				var relative = file.Path.Replace(dir.Path, "").TrimStart('\\').TrimStart('/');
+				var relative = dir.Relative(file).TrimStart('\\').TrimStart('/');
 				return regex.IsMatch(relative);
 			}).ToList();
 		}

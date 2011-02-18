@@ -27,6 +27,7 @@ namespace IFile {
 		public static string DirectoryName(this IFile file) { return System.IO.Path.GetDirectoryName(file.Path); }
 		public static string DirName(this IFile file)       { return file.DirectoryName(); }
 		public static void   Delete(this IFile file)        { File.Delete(file.Path); }
+		public static string FullPath(this IFile file)      { return System.IO.Path.GetFullPath(file.Path); }
 
 		public static string Read(this IFile file) {
 			return File.ReadAllText(file.Path);
