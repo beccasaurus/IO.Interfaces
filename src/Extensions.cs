@@ -11,7 +11,7 @@ using System.Collections.Generic;
 ///
 /// These extensions are contained here, in IFile.Extensions.
 /// </remarks>
-namespace IFile.Extensions {
+namespace IO.Interfaces.Extensions {
 
 	public static class StringArrayExtensions {
 

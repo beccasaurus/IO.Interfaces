@@ -1,9 +1,9 @@
 using System;
 using System.IO;
 using NUnit.Framework;
-using IFile;
+using IO.Interfaces;
 
-namespace IFile.Specs {
+namespace IO.Interfaces.Specs {
 
 	[TestFixture]
 	public class IFileSpec : Spec {

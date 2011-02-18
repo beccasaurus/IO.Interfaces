@@ -1,7 +1,5 @@
-IFile
-=====
-
-**NOTE** I'm going to be changing the namespace from IFile to something else shortly because it sucks having a class in a namespace of the same name
+IO.Interfaces
+=============
 
 Why?
 ----
@@ -23,7 +21,7 @@ How?
 
 So, what's a good solution?  Interfaces + Extension Methods to the rescue!
 
-    using IFile;
+    using IO.Interfaces;
 
     public class ZipFile : SomeBaseClass, IFile {
       public string Path { get; set; }
@@ -56,7 +54,7 @@ This project is *intended* to allow you to add useful IO methods to your classes
 
 If you want to use these useful methods *without* a class, however, you can easily convert any string into an IFile or IDirectory:
 
-    using IFile;
+    using IO.Interfaces;
 
     @"C:\".AsDirectory().SubDirectories().ForEach(dir => ...);
 
@@ -79,7 +77,7 @@ This will be packaged soon ... for now, feel free to use the code directly
 License
 -------
 
-IFile is released under the MIT license.
+IO.Interfaces is released under the MIT license.
 
 TODO
 ----

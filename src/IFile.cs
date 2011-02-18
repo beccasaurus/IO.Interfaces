@@ -2,10 +2,10 @@ using System;
 using System.IO;
 using System.Linq;
 using System.Collections.Generic;
-using IFile.Extensions;
-using IFile.Implementations;
+using IO.Interfaces.Extensions;
+using IO.Interfaces.Implementations;
 
-namespace IFile {
+namespace IO.Interfaces {
 
 	/// <summary>Represents a file.  Any class that has a public string Path property can be an IFile</summary>
 	/// <remarks>Why?  So you can use the IFileExtensions with your IFile class to Copy(), Move(), Delete(), etc the file.</remarks>

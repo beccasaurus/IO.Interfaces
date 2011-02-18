@@ -1,5 +1,5 @@
 using System;
-using IFile;
+using IO.Interfaces;
 
 /// <summary>Sample IFile and IDirectory concrete implementations (used internally)</summary>
 /// <remarks>
@@ -11,7 +11,7 @@ using IFile;
 /// Instead, to get an IFile/IDirectory, the easiest thing to do is call @"C:\".AsDirectory() 
 /// or "README".AsFile() using our global extension methods.
 /// </remarks>
-namespace IFile.Implementations {
+namespace IO.Interfaces.Implementations {
 
 	/// <summary>Concrete implementation of IFile</summary>
 	public class RealFile : IFile {

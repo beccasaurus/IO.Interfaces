@@ -7,8 +7,8 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{366A0B3B-1032-48F7-A4CE-DE25C332ACBF}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>IFile.Specs</RootNamespace>
-    <AssemblyName>IFile.Specs</AssemblyName>
+    <RootNamespace>IO.Interfaces.Specs</RootNamespace>
+    <AssemblyName>IO.Interfaces.Specs</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">

@@ -3,10 +3,10 @@ using System.IO;
 using System.Linq;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
-using IFile.Extensions;
-using IFile.Implementations;
+using IO.Interfaces.Extensions;
+using IO.Interfaces.Implementations;
 
-namespace IFile {
+namespace IO.Interfaces {
 
 	/// <summary>Represents a directory.  Any class that has a public string Path property can be an IDirectory</summary>
 	/// <remarks>Why?  So you can use the IDirectoryExtensions with your IDirectory class to Copy(), Move(), Delete(), etc the Directory.</remarks>

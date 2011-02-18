@@ -3,9 +3,9 @@ using System.IO;
 using System.Linq;
 using System.Collections.Generic;
 using NUnit.Framework;
-using IFile;
+using IO.Interfaces;
 
-namespace IFile.Specs {
+namespace IO.Interfaces.Specs {
 
 	[TestFixture]
 	public class IDirectorySpec : Spec {

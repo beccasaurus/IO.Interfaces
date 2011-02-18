@@ -9,7 +9,7 @@ using System;
 ///
 /// For any of our other extensions (used internally), you can use IFile.Extensions.
 /// </remarks>
-namespace IFile {
+namespace IO.Interfaces {
 
 	/// <summary>Extension methods on String that you get when using the IFile namespace</summary>
 	public static class StringExtensions {

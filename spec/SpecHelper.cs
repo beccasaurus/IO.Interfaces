@@ -3,9 +3,9 @@ using System.IO;
 using System.Linq;
 using System.Collections.Generic;
 using NUnit.Framework;
-using IFile.Extensions;
+using IO.Interfaces.Extensions;
 
-namespace IFile.Specs {
+namespace IO.Interfaces.Specs {
 
 	/// <summary>Simple base class for our specs to inherit from</summary>
 	public class Spec {
