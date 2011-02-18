@@ -54,6 +54,8 @@ This project is *intended* to allow you to add useful IO methods to your classes
 
 If you want to use these useful methods *without* a class, however, you can easily convert any string into an IFile or IDirectory:
 
+    using IFile;
+
     @"C:\".AsDirectory().SubDirectories().ForEach(dir => ...);
 
     "/home/user/.bashrc".AsFile().Copy("backups");
