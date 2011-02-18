@@ -1,0 +1,6 @@
+*.sw?
+*.pidb
+*.suo
+bin
+obj
+TestResult.xml
