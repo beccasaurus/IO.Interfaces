@@ -78,3 +78,8 @@ License
 -------
 
 IFile is released under the MIT license.
+
+TODO
+----
+
+ - If a path starts with a '~', replace that tilde with the user's HOME directory.  eg. `"~/.bashrc".AsFile().Read();`
