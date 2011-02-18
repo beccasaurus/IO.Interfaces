@@ -47,6 +47,19 @@ on your instances.  All IFile and IDirectory require is a `public string Path` p
 
 That (and more) will all work once you've added IFile/IDirectory to your class.
 
+Without Classes
+---------------
+
+This project is *intended* to allow you to add useful IO methods to your classes by implementing IFile or IDirectory.
+
+If you want to use these useful methods *without* a class, however, you can easily convert any string into an IFile or IDirectory:
+
+    @"C:\".AsDirectory().SubDirectories().ForEach(dir => ...);
+
+    "/home/user/.bashrc".AsFile().Copy("backups");
+
+`AsFile` and `AsDirectory` (or `AsDir`) can be used to take any string and, assuming it represents a path, give you back an IFile or IDirectory.
+
 Alpha
 -----
 
