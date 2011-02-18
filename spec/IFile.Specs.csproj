@@ -43,5 +43,11 @@
   <ItemGroup>
     <Compile Include="**\*.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\src\IFile.csproj">
+      <Project>{E7B8F827-D18E-4D8B-B951-AD53F7E56F9B}</Project>
+      <Name>IFile</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
