@@ -1,6 +1,8 @@
 IFile
 =====
 
+**NOTE** I'm going to be changing the namespace from IFile to something else shortly because it sucks having a class in a namespace of the same name
+
 Why?
 ----
 
