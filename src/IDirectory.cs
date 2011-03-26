@@ -68,10 +68,25 @@ namespace IO.Interfaces {
 			var fullDirPath = dir.FullPath();
 
 			var index = fullPath.IndexOf(fullDirPath);
-			if (index < 0)
-				return null; // this path is NOT relative to this directory.
-			else
+			if (index >= 0) 
 				return fullPath.Substring(index + fullDirPath.Length);
+
+			// This is ugly!  :(
+			var dirsUp  = 1;
+			var baseDir = System.IO.Path.GetDirectoryName(dir.Path);
+			while (baseDir != null) {
+				if (path.Contains(baseDir)) {
+					var dots = "";
+					for (int i = 0; i < dirsUp; i++)
+						dots = ".." + System.IO.Path.DirectorySeparatorChar.ToString() + dots;
+					return dots + baseDir.AsDir().Relative(path).TrimStart(System.IO.Path.DirectorySeparatorChar);
+				}
+				dirsUp++;
+				baseDir = System.IO.Path.GetDirectoryName(baseDir);
+			}
+
+			// Didn't find a common path ... not relative?
+			return null;
 		}
 
 		public static string Relative(this IDirectory dir, IFile file) {
