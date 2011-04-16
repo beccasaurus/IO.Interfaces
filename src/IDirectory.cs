@@ -75,11 +75,11 @@ namespace IO.Interfaces {
 			var dirsUp  = 1;
 			var baseDir = System.IO.Path.GetDirectoryName(dir.Path);
 			while (baseDir != null) {
-				if (path.Contains(baseDir)) {
+				if (fullPath.Contains(baseDir)) {
 					var dots = "";
 					for (int i = 0; i < dirsUp; i++)
 						dots = ".." + System.IO.Path.DirectorySeparatorChar.ToString() + dots;
-					return dots + baseDir.AsDir().Relative(path).TrimStart(System.IO.Path.DirectorySeparatorChar);
+					return dots + baseDir.AsDir().Relative(fullPath).TrimStart(System.IO.Path.DirectorySeparatorChar);
 				}
 				dirsUp++;
 				baseDir = System.IO.Path.GetDirectoryName(baseDir);
